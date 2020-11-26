@@ -76,7 +76,7 @@ app.get("/admin", function (req, res) {
 
     }
     else {
-        res.sendFile(path.join(__dirname + "/static/admin_noaccess.html"))
+        res.status(403).sendFile(path.join(__dirname + "/static/admin_noaccess.html"))
         CurrentPage = "/static/admin_noaccess.html"
     }
 })
