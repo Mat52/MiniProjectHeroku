@@ -173,6 +173,9 @@ app.get("/gender", function (req, res) {
         res.sendFile(path.join(__dirname + CurrentPage))
     }
     else {
+        users.sort(function (a, b) {
+            return a.id - b.id;
+        });
         var html = "<!DOCTYPE html>\n<html>\n    <head>\n<style>body{background-color:#222831;margin:0;padding:0;}td{height:70px;border: 1px solid yellow; font-size:25px;color:white;text-align:center;width:50%;} #nav{height:50px;width:100%;color:white;}#nav>p{padding:0;margin-left:30px;float:left;color:white}#nav>p>a{color:white;}</style>    </head>\n <body> \n <div id='nav'><p><a href='/sort'>sort</a></p><p><a href='/gender'>gender</a></p><p><a href='/show'>show</a></p></div><table style='width:100%'>"
         for (var i = 0; i < users.length; i++) {
             if (users[i].plec == "K") {
@@ -205,6 +208,9 @@ app.get("/show", function (req, res) {
         res.sendFile(path.join(__dirname + CurrentPage))
     }
     else {
+        users.sort(function (a, b) {
+            return a.id - b.id;
+        });
         var html = "<!DOCTYPE html>\n<html>\n    <head>\n<style>body{background-color:#222831;margin:0;padding:0;}td{border: 1px solid yellow; font-size:25px;color:white;text-align:center;} #nav{height:50px;width:100%;color:white;}#nav>p{padding:0;margin-left:30px;float:left;color:white}#nav>p>a{color:white;}</style>    </head>\n <body> \n <div id='nav'><p><a href='/sort'>sort</a></p><p><a href='/gender'>gender</a></p><p><a href='/show'>show</a></p></div><table style='width:100%'>"
         for (var i = 0; i < users.length; i++) {
             var adding = "<tr><td style='width:15%; height:50px;'>id: " + users[i].id + "</td><td style='width:40%; height:50px;'>user: " + users[i].login + " - " + users[i].password + "</td><td style='width:15%; height:50px;'>uczeń: <input type='checkbox' disabled='disabled' class='checkbox' name='checkbox' " + users[i].uczen + "></td><td style='width:15%; height:50px;'>wiek: " + users[i].wiek + "</td><td style='width:15% height:50px;'>płeć: " + users[i].plec + "</td></tr>"
